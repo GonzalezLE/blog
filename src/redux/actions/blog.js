@@ -4,7 +4,9 @@ import {
     GET_BLOG_LIST_FAIL,
     GET_BLOG_SUCCESS,
     GET_BLOG_FAIL,
+    // eslint-disable-next-line
     GET_BLOG_PAGINATION_RESULTS_SUCCESS,
+    // eslint-disable-next-line
     GET_BLOG_PAGINATION_RESULTS_FAIL
 } from './types.js'
 
@@ -19,7 +21,11 @@ export const get_blog_list = () => async dispatch => {
     try {
         const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/blog/`, config);
 
-        if (res.status == 200) {
+        
+
+        
+        console.log(res)
+        if (res.status === 200) {
             dispatch({
                 type: GET_BLOG_LIST_SUCCESS,
                 payload: res.data
@@ -30,6 +36,9 @@ export const get_blog_list = () => async dispatch => {
             })
         }
     } catch (error) {
+
+        console.log('help me');
+        console.error(error)
         dispatch({
             type: GET_BLOG_LIST_FAIL
         })
@@ -48,7 +57,7 @@ export const get_blog_list_page = (p) => async dispatch => {
     try {
         const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/blog/?p=${p}`, config);
 
-        if (res.status == 200) {
+        if (res.status === 200) {
             dispatch({
                 type: GET_BLOG_LIST_SUCCESS,
                 payload: res.data
@@ -76,7 +85,7 @@ export const get_blog = (slug) => async dispatch => {
     try {
         const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/blog/${slug}`, config);
 
-        if (res.status == 200) {
+        if (res.status === 200) {
             dispatch({
                 type: GET_BLOG_LIST_SUCCESS,
                 payload: res.data

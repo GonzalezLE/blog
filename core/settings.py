@@ -21,7 +21,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     "localhost",
-    "127.0.0.1"
+    "127.0.0.1",
+    "http://localhost"
 ]
 
 if not DEBUG:
@@ -115,11 +116,17 @@ DATABASES["default"]["ATOMIC_REQUESTS"] = True
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000',
     'http://localhost:8000',
+    "http://localhost"
 ]
+
+# configurar despues
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_HEADERS = ['*']
 
 CSRF_TRUSTED_ORIGINS = [
     'http://localhost:3000',
     'http://localhost:8000',
+    "http://localhost"
 ]
 
 if not DEBUG:
